@@ -83,4 +83,9 @@ def extract_features(document):
 
 
 training_set = nltk.classify.util.apply_features(extract_features, tweets)
-print(training_set)
+
+classifier = nltk.NaiveBayesClassifier.train(training_set)
+
+tweet = "I'm gonna be dead tomorrow"
+
+print(classifier.classify(extract_features(tweet)))
