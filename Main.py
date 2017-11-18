@@ -11,7 +11,7 @@ def main():
     get_tweet_words(full_set)
     word_list = get_tweet_words(full_set)
     featured_words = get_amount_words(word_list)
-    # print(extract_features(negative_tweets[0],featured_words))
+    print(extract_features(negative_tweets[0], featured_words))
 
 
 def read_tweets(filename1: str, sentiment: str) -> List[Tuple[str, str]]:
@@ -44,8 +44,7 @@ def strip_tweets(negative_tweets: List[Tuple[str, str]], positive_tweets: List[T
         filtered_links = [word for word in filtered_users_tags if 'http' not in word]
         filtered_punct = [word.strip(".,?!") for word in filtered_links]
         filtered = [word.replace('...', ' ') for word in filtered_punct]
-        print(filtered)
-        # tweets.append((filtered, sentiment))
+        tweets.append((filtered, sentiment))
     return tweets
 
 
