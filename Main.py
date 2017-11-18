@@ -57,7 +57,8 @@ def get_tweet_words(tweet_set: List[Tuple[str, str]])->List[str]:
     return words_list
 
 
-def get_amount_words():
+def get_amount_words(wordlist: List[str])->Dict[str, int]:
+
     pass
 
 
