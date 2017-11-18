@@ -1,6 +1,7 @@
 import json
 import sys
 from typing import *
+import nltk
 
 
 def main():
@@ -9,7 +10,8 @@ def main():
     full_set = strip_tweets(negative_tweets, positive_tweets)
     get_tweet_words(full_set)
     word_list = get_tweet_words(full_set)
-    print(word_list)
+    featured_words = get_amount_words(word_list)
+    # print(extract_features(negative_tweets[0],featured_words))
 
 
 def read_tweets(filename1: str, sentiment: str) -> List[Tuple[str, str]]:
@@ -38,9 +40,12 @@ def strip_tweets(negative_tweets: List[Tuple[str, str]], positive_tweets: List[T
     """
     tweets = []
     for (words, sentiment) in negative_tweets + positive_tweets:
-        filtered = [word.lower() for word in words.split() if len(word) >= 3]
-        tweets.append((filtered, sentiment))
-    # print(tweets)
+        filtered_users_tags = [word.lower() for word in words.split() if len(word) >= 3 and '@' != word[0][:1] and '#' != word[0][:1] and '&' != word[0][:1] and 'http' != word]
+        filtered_links = [word for word in filtered_users_tags if 'http' not in word]
+        filtered_punct = [word.strip(".,?!") for word in filtered_links]
+        filtered = [word.replace('...', ' ') for word in filtered_punct]
+        print(filtered)
+        # tweets.append((filtered, sentiment))
     return tweets
 
 
@@ -53,13 +58,26 @@ def get_tweet_words(tweet_set: List[Tuple[str, str]])->List[str]:
     words_list = []
     for(words, sentiment) in tweet_set:
         words_list.extend(words)
-    # print(words_list)
     return words_list
 
 
-def get_amount_words(wordlist: List[str])->Dict[str, int]:
+def get_amount_words(wordlist: List[str])->KeysView:
+    """
+    Function that counts the amount of occurrences in a word list and returns the dict with the amount
+    :param wordlist: The wordlist
+    :return: Dictionary with the word and amount it occurred in the set
+    """
+    word_list = nltk.FreqDist(wordlist)
+    featured_words = word_list.keys()
+    return featured_words
 
-    pass
+
+def extract_features(document, featured_words):
+    document_words = set(document)
+    features = {}
+    for word in featured_words:
+        features['contains(%s)' % word] = (word in document_words)
+    return features
 
 
 if __name__ == '__main__':
