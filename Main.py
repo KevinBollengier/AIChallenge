@@ -36,8 +36,11 @@ def strip_tweets(negative_tweets: List[Tuple[str, str]], positive_tweets: List[T
     tweets = []
     for (words, sentiment) in negative_tweets + positive_tweets:
         filtered_users_tags = [word.lower() for word in words.split() if
-                               len(word) >= 3 and '@' != word[0][:1] and '#' != word[0][:1] and '&' != word[0][
-                                                                                                       :1] and 'http' != word]
+                               len(word) >= 3 and
+                               '@' != word[0][:1] and
+                               '#' != word[0][:1] and
+                               '&' != word[0][:1] and
+                               'http' != word]
         filtered_links = [word for word in filtered_users_tags if 'http' not in word]
         filtered_punct = [word.strip(".,?!") for word in filtered_links]
         filtered = [word.replace('...', ' ') for word in filtered_punct]
@@ -74,18 +77,35 @@ def get_word_features(wordlist: List[str]) -> KeysView:
 word_features = get_word_features(get_tweet_words(tweets))
 
 
-def extract_features(document):
-    document_words = set(document)
+def extract_features(tweet: List[str]) -> Dict:
+    """
+    Function that returns dict of words with true and false depending if the tweet contains the word or not
+    :param tweet: A string of text or "tweet" which is going to be classified, it's a list because we need to consider
+    every word individually
+    :return: Dict of words with true/false labels depending if the word is inside the tweet or not
+    """
+    tweet_words = set(tweet)
     features = {}
     for word in word_features:
-        features['contains(%s)' % word] = (word in document_words)
+        features['contains(%s)' % word] = (word in tweet_words)
     return features
 
 
 training_set = nltk.classify.util.apply_features(extract_features, tweets)
 
-classifier = nltk.NaiveBayesClassifier.train(training_set)
 
-tweet = "I'm gonna be dead tomorrow"
+def main():
+    print("Training the algorithm, please wait, this can take a while!")
+    classifier = nltk.NaiveBayesClassifier.train(training_set)
+    print("Algorithm trained!")
+    tweet = input("Enter your tweet to classify: \n")
+    print(classifier.classify(extract_features(tweet.split())))
+    # nltk.classify.accuracy(classifier,)
+    while tweet != "exit":
+        tweet = input("Enter another tweet to classify or type exit to quit\n")
+        if tweet != "exit":
+            print(classifier.classify(extract_features(tweet.split())))
 
-print(classifier.classify(extract_features(tweet)))
+
+if __name__ == '__main__':
+    main()
