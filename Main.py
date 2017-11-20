@@ -23,6 +23,9 @@ def read_tweets(filename1: str, sentiment: str) -> List[Tuple[str, str]]:
 negative_tweets = read_tweets(sys.argv[1], "negative")
 positive_tweets = read_tweets(sys.argv[2], "positive")
 
+CONST_NEG_TEST = read_tweets("Datasets/negative_test.json", "negative")
+COnSt_POS_TEST = read_tweets("Datasets/positive_test.json", "positive")
+
 
 def strip_tweets(negative_tweets: List[Tuple[str, str]], positive_tweets: List[Tuple[str, str]]) -> List[
     Tuple[str, str]]:
@@ -49,6 +52,7 @@ def strip_tweets(negative_tweets: List[Tuple[str, str]], positive_tweets: List[T
 
 
 tweets = strip_tweets(negative_tweets, positive_tweets)
+test_tweets = strip_tweets(CONST_NEG_TEST, COnSt_POS_TEST)
 
 
 def get_tweet_words(tweet_set: List[Tuple[str, str]]) -> List[str]:
@@ -92,15 +96,17 @@ def extract_features(tweet: List[str]) -> Dict:
 
 
 training_set = nltk.classify.util.apply_features(extract_features, tweets)
+test_set = nltk.classify.util.apply_features(extract_features, test_tweets)
 
 
 def main():
     print("Training the algorithm, please wait, this can take a while!")
     classifier = nltk.NaiveBayesClassifier.train(training_set)
     print("Algorithm trained!")
+    print("Classifier accuracy percentage: ", (nltk.classify.accuracy(classifier, test_set)) * 100)
     tweet = input("Enter your tweet to classify: \n")
     print(classifier.classify(extract_features(tweet.split())))
-    # nltk.classify.accuracy(classifier,)
+    # nltk.classify.accuracy(classifier, test_set)
     while tweet != "exit":
         tweet = input("Enter another tweet to classify or type exit to quit\n")
         if tweet != "exit":
