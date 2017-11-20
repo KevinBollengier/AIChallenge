@@ -106,7 +106,6 @@ def main():
     print("Classifier accuracy percentage: ", (nltk.classify.accuracy(classifier, test_set)) * 100)
     tweet = input("Enter your tweet to classify: \n")
     print(classifier.classify(extract_features(tweet.split())))
-    # nltk.classify.accuracy(classifier, test_set)
     while tweet != "exit":
         tweet = input("Enter another tweet to classify or type exit to quit\n")
         if tweet != "exit":
