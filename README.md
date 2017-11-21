@@ -16,12 +16,13 @@ python Main.py Datasets/negative_tweets.json Datasets/positive_tweets.json
 #### Why analyse tweets?
 
 Originally I wanted to use this method to categorize Jihadi tweets, due to lack of a good dataset, I chose to extend the
-the problem to something more general. Nowadays "social-media" is a great source of big data. The possibilities are endless.
+the problem to something more general. Nowadays "social-media" is a wonderful source of big data. The possibilities are endless.
 Marketing departments can use tweets to check how people feel about a newly released product to quickly adapt their marketing
 strategies. 
 
 For example: Star Wars Battlefront II was released on november 17 and received a lot of backlash due to the
-pay to win in the game. If they use the Twitter API they can quickly get a view on how many users are tweeting negative things about the game.
+pay to win strategy incorporated in the game mechanics. When using the Twitter API, the SWB II team can quickly obtain an overview of how many users are tweeting about their new product,
+and can categorize them in positive and negative feelings toward their new game.
 
 ```
 python Main.py Datasets/negative_tweets.json Datasets/positive_tweets.json
@@ -36,8 +37,8 @@ negative
 
 ```
 
-As you can see, the tweet that this algorithm never saw classified it as a negative tweet. This could be used to get automated feedback
-about new products. 
+As you can see, the tweet, which has never before been fed to the system, has been classified by this algorithm as a negative tweet.
+This could be used to get automated feedback about new products.
 
 What about the latest movie Thor Ragnarok?
 
@@ -57,8 +58,7 @@ positive
 
 ```
 
-But we could even go further, because social media can also be used as indicator to find if people are coping with depression
-or even suicidal thoughts.
+We could even go further: social media can also be used as indicator to find if people are coping with depression or even suicidal thoughts.
 
 ```
 Enter another tweet to classify or type exit to quit
@@ -71,21 +71,23 @@ Social media could use this to help with suicide prevention.
 
 ### Why did I chose this subject?
 
-Well basically social media, are not social media anymore. They are one of the best examples of "open (big) data". This data is used everywhere and most of it is publicly reachable for anyone.
+Because I believe that social media, are no longer social. They are one of the best examples of "open (big) data".
+This data is used everywhere and most of it is publicly available for everyone.
 
-Intelligence agencies use this stuff to search for criminals, terrorism suspects, ...
+Intelligence agencies use this data to search for criminals, terrorism suspects, ...
 Marketeers use it for building marketing strategies.
 
-In my opinion it could be a nice use to monitor cyber bullying and classifying people with mental problems.
+Instead of using it ofr profitability, it could be used for something directly impacting the life of a human being,
+namely monitoring cyber bullying and identifying people with mental issues.
 
 ### Why use Artificial Intelligence for this?
 
-Well, with social media, we are working with massive datasets, which is just too much to manually handle. Also an AI thinks rationally compared to a human doing this job.
-We might consider a negative positive, or the other way around based on how we feel on that same moment. As example of the Star Wars tweet, you might consider it positive, because you don't like Star Wars or EA in general.
+The objectivity of AI and its innate ability to process large amounts of data in a relatively short amount of time makes it the best tool for this job.
+Also a human may be biased by his own preference on a certain point of view, where a machine will not. e.g. Star wars tweet, may be considered positive by some who don't like Star wars or EA in general.
 
 ### Existing examples of social media analysis using Artificial Intelligence
 
-- In the events of the Snowden leaks, it was confirmed that the NSA was using social media to spy on people and categorize them as potential threat or not.
+- In the events of the Snowden leaks, it was confirmed that the NSA was using social media to spy on people and categorize them as potential threats.
 - Companies are already using social media to improve the customer experience by analysing what people are tweeting about them.
 
 
@@ -93,7 +95,7 @@ We might consider a negative positive, or the other way around based on how we f
 
 I am using a test set of 400 lines of twitter data and the accuracy of the algorithm is 83.5%
 
-This is done by classifying the data (without the labels) and then compare them to the label they were given.
+This is done by classifying the data (without the labels) and then compare them to the label they were given in the test set.
 
 ```
 Training the algorithm, please wait, this can take a while!
