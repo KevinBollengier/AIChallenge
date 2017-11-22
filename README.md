@@ -15,7 +15,7 @@ python Main.py Datasets/negative_tweets.json Datasets/positive_tweets.json
 
 #### Why analyse tweets?
 
-Originally I wanted to use this method to categorize Jihadi tweets, due to lack of a good dataset, I chose to extend the
+Originally I wanted to use this method to categorize Jihadi tweets, but due to lack of a good dataset, I chose to extend the
 the problem to something more general. Nowadays "social-media" is a wonderful source of big data. The possibilities are endless.
 Marketing departments can use tweets to check how people feel about a newly released product to quickly adapt their marketing
 strategies. 
@@ -69,7 +69,7 @@ negative
 
 Social media could use this to help with suicide prevention.
 
-### Why did I chose this subject?
+### Why did I choose this subject?
 
 Because I believe that social media, are no longer social. They are one of the best examples of "open (big) data".
 This data is used everywhere and most of it is publicly available for everyone.
@@ -77,7 +77,7 @@ This data is used everywhere and most of it is publicly available for everyone.
 Intelligence agencies use this data to search for criminals, terrorism suspects, ...
 Marketeers use it for building marketing strategies.
 
-Instead of using it ofr profitability, it could be used for something directly impacting the life of a human being,
+Instead of using it for profitability, it could be used for something directly impacting the life of a human being,
 namely monitoring cyber bullying and identifying people with mental issues.
 
 ### Why use Artificial Intelligence for this?
