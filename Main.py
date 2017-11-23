@@ -103,7 +103,7 @@ def main():
     print("Training the algorithm, please wait, this can take a while!")
     classifier = nltk.NaiveBayesClassifier.train(training_set)
     print("Algorithm trained, please wait calculating accuracy...")
-    print("Classifier accuracy percentage: ", (nltk.classify.accuracy(classifier, test_set)) * 100)
+    print("Classifier accuracy percentage: ", (nltk.classify.accuracy(classifier, training_set)) * 100)
     tweet = input("Enter your tweet to classify: \n")
     print(classifier.classify(extract_features(tweet.split())))
     while tweet != "exit":

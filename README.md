@@ -13,6 +13,17 @@ python Main.py Datasets/negative_tweets.json Datasets/positive_tweets.json
 
 ### Justification
 
+#### Why did I choose this subject?
+
+Because I believe that social media, are no longer social. They are one of the best examples of "open (big) data".
+This data is used everywhere and most of it is publicly available for everyone.
+
+Intelligence agencies use this data to search for criminals, terrorism suspects, ...
+Marketeers use it for building marketing strategies.
+
+Instead of using it for profitability, it could be used for something directly impacting the life of a human being,
+namely monitoring cyber bullying and identifying people with mental issues.
+
 #### Why analyse tweets?
 
 Originally I wanted to use this method to categorize Jihadi tweets, but due to lack of a good dataset, I chose to extend the
@@ -69,16 +80,6 @@ negative
 
 Social media could use this to help with suicide prevention.
 
-### Why did I choose this subject?
-
-Because I believe that social media, are no longer social. They are one of the best examples of "open (big) data".
-This data is used everywhere and most of it is publicly available for everyone.
-
-Intelligence agencies use this data to search for criminals, terrorism suspects, ...
-Marketeers use it for building marketing strategies.
-
-Instead of using it for profitability, it could be used for something directly impacting the life of a human being,
-namely monitoring cyber bullying and identifying people with mental issues.
 
 ### Why use Artificial Intelligence for this?
 
@@ -103,3 +104,12 @@ Algorithm trained, please wait calculating accuracy...
 Classifier accuracy percentage:  83.5
 
 ```
+
+As requested during the presentation I did the same with the training set:
+
+```
+Training the algorithm, please wait, this can take a while!
+Algorithm trained, please wait calculating accuracy...
+Classifier accuracy percentage:  93.15625
+```
+
