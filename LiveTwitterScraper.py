@@ -9,8 +9,8 @@ from selenium.webdriver.common.keys import Keys
 def main():
     query = sys.argv[1]
     tweets = get_tweets(query)
-    # for tweet in tweets:
-    #     print(tweet.text)
+    for tweet in tweets:
+        print(tweet.text)
 
     pass
 
@@ -18,7 +18,7 @@ def main():
 def get_tweets(query: str) -> List[str]:
     #     TODO: test
     browser = webdriver.Chrome('ChromeDriver/chromedriver.exe')
-    url = u'https://twitter.com/search?q=' + query
+    url = u'https://twitter.com/search?q=' + query + '&lang=en'
 
     browser.get(url)
     time.sleep(1)
@@ -27,8 +27,6 @@ def get_tweets(query: str) -> List[str]:
         browser_body.send_keys(Keys.PAGE_DOWN)
         time.sleep(0.2)
     tweets = browser.find_elements_by_class_name('tweet-text')
-    for tweet in tweets:
-        print(tweet.text)
     return tweets
 
 
